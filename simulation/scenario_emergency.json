@@ -1,0 +1,140 @@
+{
+  "scenario_name": "SCENARIO_EMERGENCY_CRITICAL_CASUALTY",
+  "description": "High-severity emergency. Soldier 1 suffers explosive blast shock (5.4g impact), collapse/fall with post-impact immobility, and triggers manual SOS beacon.",
+  "simulation_metadata": {
+    "generated_by": "SURAKSHA-NET Simulator Engine v1.0",
+    "is_simulated": true,
+    "disclaimer": "Simulated data for software proof-of-concept testing. Not validated in live tactical trials."
+  },
+  "personnel": [
+    {
+      "msg_id": "SN-20261016-3001",
+      "timestamp": 1729074600,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-01",
+      "personnel_name": "Sepoy Rajesh Kumar",
+      "callsign": "DELTA-LEAD",
+      "status": "EMERGENCY",
+      "alert_type": "MANUAL_SOS",
+      "vitals": {
+        "heart_rate_bpm": 152,
+        "spo2_percent": 87,
+        "body_temp_c": 35.8,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 1.25,
+        "accel_y_g": 2.10,
+        "accel_z_g": 0.15,
+        "impact_g": 5.42,
+        "fall_detected": true,
+        "is_immobile": true
+      },
+      "gps": {
+        "latitude": 35.4219,
+        "longitude": 77.1102,
+        "altitude_m": 5430.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -81,
+        "snr_db": 6.9,
+        "hop_count": 2,
+        "route": ["SOLDIER-01", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 68,
+        "voltage_v": 3.76,
+        "is_low_battery": false
+      },
+      "checksum": "E9981B4F"
+    },
+    {
+      "msg_id": "SN-20261016-3002",
+      "timestamp": 1729074605,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-02",
+      "personnel_name": "Lance Naik Amit Singh",
+      "callsign": "DELTA-SCOUT",
+      "status": "WARNING",
+      "alert_type": "LOW_BATTERY",
+      "vitals": {
+        "heart_rate_bpm": 118,
+        "spo2_percent": 94,
+        "body_temp_c": 35.4,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.15,
+        "accel_y_g": 0.22,
+        "accel_z_g": 0.95,
+        "impact_g": 1.45,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.4298,
+        "longitude": 75.7630,
+        "altitude_m": 3295.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -86,
+        "snr_db": 6.2,
+        "hop_count": 2,
+        "route": ["SOLDIER-02", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 11,
+        "voltage_v": 3.38,
+        "is_low_battery": true
+      },
+      "checksum": "88B4C01D"
+    },
+    {
+      "msg_id": "SN-20261016-3003",
+      "timestamp": 1729074610,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-03",
+      "personnel_name": "Havildar Vikram Thapa",
+      "callsign": "DELTA-REAR",
+      "status": "SAFE",
+      "alert_type": "PERIODIC_TELEMETRY",
+      "vitals": {
+        "heart_rate_bpm": 92,
+        "spo2_percent": 97,
+        "body_temp_c": 36.6,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.09,
+        "accel_y_g": 0.14,
+        "accel_z_g": 0.98,
+        "impact_g": 1.20,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.5548,
+        "longitude": 76.1360,
+        "altitude_m": 4130.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -78,
+        "snr_db": 7.8,
+        "hop_count": 2,
+        "route": ["SOLDIER-03", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 60,
+        "voltage_v": 3.71,
+        "is_low_battery": false
+      },
+      "checksum": "1E47A950"
+    }
+  ]
+}

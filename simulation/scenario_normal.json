@@ -1,0 +1,140 @@
+{
+  "scenario_name": "SCENARIO_NORMAL_PATROL",
+  "description": "Baseline nominal patrolling conditions across 3 deployed soldier nodes in high-altitude sector. All vitals within normal physiological limits, relay nodes active.",
+  "simulation_metadata": {
+    "generated_by": "SURAKSHA-NET Simulator Engine v1.0",
+    "is_simulated": true,
+    "disclaimer": "Simulated data for software proof-of-concept testing. Not validated in live tactical trials."
+  },
+  "personnel": [
+    {
+      "msg_id": "SN-20261016-1001",
+      "timestamp": 1729074000,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-01",
+      "personnel_name": "Sepoy Rajesh Kumar",
+      "callsign": "DELTA-LEAD",
+      "status": "SAFE",
+      "alert_type": "PERIODIC_TELEMETRY",
+      "vitals": {
+        "heart_rate_bpm": 74,
+        "spo2_percent": 98,
+        "body_temp_c": 36.7,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.04,
+        "accel_y_g": 0.07,
+        "accel_z_g": 0.99,
+        "impact_g": 1.02,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 35.4211,
+        "longitude": 77.1095,
+        "altitude_m": 5420.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -74,
+        "snr_db": 8.6,
+        "hop_count": 2,
+        "route": ["SOLDIER-01", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 88,
+        "voltage_v": 3.95,
+        "is_low_battery": false
+      },
+      "checksum": "E289F4C1"
+    },
+    {
+      "msg_id": "SN-20261016-1002",
+      "timestamp": 1729074005,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-02",
+      "personnel_name": "Lance Naik Amit Singh",
+      "callsign": "DELTA-SCOUT",
+      "status": "SAFE",
+      "alert_type": "PERIODIC_TELEMETRY",
+      "vitals": {
+        "heart_rate_bpm": 82,
+        "spo2_percent": 97,
+        "body_temp_c": 36.8,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.11,
+        "accel_y_g": 0.14,
+        "accel_z_g": 0.98,
+        "impact_g": 1.08,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.4285,
+        "longitude": 75.7615,
+        "altitude_m": 3280.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -72,
+        "snr_db": 9.1,
+        "hop_count": 2,
+        "route": ["SOLDIER-02", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 92,
+        "voltage_v": 4.05,
+        "is_low_battery": false
+      },
+      "checksum": "D311A9B2"
+    },
+    {
+      "msg_id": "SN-20261016-1003",
+      "timestamp": 1729074010,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-03",
+      "personnel_name": "Havildar Vikram Thapa",
+      "callsign": "DELTA-REAR",
+      "status": "SAFE",
+      "alert_type": "PERIODIC_TELEMETRY",
+      "vitals": {
+        "heart_rate_bpm": 69,
+        "spo2_percent": 99,
+        "body_temp_c": 36.6,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.03,
+        "accel_y_g": 0.05,
+        "accel_z_g": 1.01,
+        "impact_g": 0.99,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.5539,
+        "longitude": 76.1349,
+        "altitude_m": 4120.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -76,
+        "snr_db": 7.9,
+        "hop_count": 2,
+        "route": ["SOLDIER-03", "RELAY-01", "BASE-COMMAND-01"],
+        "backup_route_active": false
+      },
+      "power": {
+        "battery_pct": 76,
+        "voltage_v": 3.82,
+        "is_low_battery": false
+      },
+      "checksum": "B574F81A"
+    }
+  ]
+}

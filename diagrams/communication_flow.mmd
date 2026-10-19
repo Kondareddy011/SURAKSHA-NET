@@ -1,0 +1,37 @@
+sequenceDiagram
+    autonumber
+    actor Soldier as Soldier Wearable Node
+    participant Relay1 as Primary Relay (Ridge-Alpha)
+    participant Relay2 as Backup Relay (Ridge-Bravo)
+    participant Base as Tactical Base Gateway
+    actor Commander as Rescue Command Dashboard
+
+    %% Phase 1: Routine Telemetry
+    Note over Soldier,Commander: Phase 1: Routine Telemetry (SAFE State)
+    Soldier->>Relay1: RF Broadcast Telemetry (Interval 3000ms, SAFE)
+    Relay1->>Relay1: Check Dup Cache (Unique) -> Increment Hop
+    Relay1->>Base: High-Power Forward (+20 dBm)
+    Base->>Commander: Serial JSON Stream -> Dashboard Map & Metrics Updated
+
+    %% Phase 2: Emergency Casualty Event
+    Note over Soldier,Commander: Phase 2: Casualty Emergency (Impact > 4.5g OR SOS Pressed)
+    Soldier->>Soldier: Sensor Fusion detects Impact (5.4g) + Fall + Immobility
+    Soldier->>Soldier: Latch EMERGENCY State: Rapid LED Strobe + Haptic Motor
+    Soldier->>Relay1: Priority Emergency Beacon (Interval 750ms, EMERGENCY)
+    Relay1->>Base: Forward Priority Emergency Frame
+    Base->>Base: Trigger Local Red Strobe + Dual-Tone Acoustic Siren
+    Base->>Base: Render Soldier Vitals & GPS on Base OLED Screen
+    Base->>Commander: Stream Emergency JSON (Flag: CRITICAL_CASUALTY)
+    Commander->>Commander: Audio-Visual Dashboard Warning + Triage Assessment
+    Commander->>Base: Operator Press "ACKNOWLEDGE" -> Mutes Acoustic Siren
+
+    %% Phase 3: Relay Node Failure & Dynamic Mesh Rerouting
+    Note over Soldier,Commander: Phase 3: Relay-01 Failure & Mesh Self-Healing
+    Relay1-xRelay1: Relay-01 Battery Depleted / Jammed (OFFLINE)
+    Soldier->>Relay1: Transmit Emergency Telemetry Frame
+    Note right of Soldier: No ACK / Link Dead on Primary Path
+    Soldier->>Relay2: Dynamic Failover to Secondary Channel (Ridge-Bravo)
+    Relay2->>Relay2: Inspect Frame -> Set backup_route_active=true
+    Relay2->>Base: Forward via Alternate Mesh Route
+    Base->>Commander: Stream Telemetry with Alternate Path Badge
+    Commander->>Commander: Display "Route Failover: DELTA-01 -> RELAY-02 -> BASE"

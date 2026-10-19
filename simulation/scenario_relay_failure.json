@@ -1,0 +1,152 @@
+{
+  "scenario_name": "SCENARIO_RELAY_FAILOVER_AND_DYNAMIC_REROUTING",
+  "description": "Primary tactical relay (RELAY-01 Ridge-Repeater-Alpha) failure simulation. The SURAKSHA-NET mesh automatically discovers and routes traffic through secondary repeater (RELAY-02 Ridge-Repeater-Bravo).",
+  "simulation_metadata": {
+    "generated_by": "SURAKSHA-NET Simulator Engine v1.0",
+    "is_simulated": true,
+    "disclaimer": "Simulated data for software proof-of-concept testing. Not validated in live tactical trials."
+  },
+  "relay_network_state": {
+    "RELAY-01": {
+      "status": "OFFLINE_JAMMED_OR_POWER_DEPLETED",
+      "operational": false,
+      "last_beacon": 1729074800
+    },
+    "RELAY-02": {
+      "status": "OPERATIONAL_BACKUP_ACTIVE",
+      "operational": true,
+      "last_beacon": 1729074900
+    }
+  },
+  "personnel": [
+    {
+      "msg_id": "SN-20261016-4001",
+      "timestamp": 1729074902,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-01",
+      "personnel_name": "Sepoy Rajesh Kumar",
+      "callsign": "DELTA-LEAD",
+      "status": "EMERGENCY",
+      "alert_type": "ROUTE_FAILOVER",
+      "vitals": {
+        "heart_rate_bpm": 146,
+        "spo2_percent": 88,
+        "body_temp_c": 35.6,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.05,
+        "accel_y_g": 0.06,
+        "accel_z_g": 0.99,
+        "impact_g": 1.05,
+        "fall_detected": true,
+        "is_immobile": true
+      },
+      "gps": {
+        "latitude": 35.4220,
+        "longitude": 77.1105,
+        "altitude_m": 5432.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -89,
+        "snr_db": 5.4,
+        "hop_count": 2,
+        "route": ["SOLDIER-01", "RELAY-02", "BASE-COMMAND-01"],
+        "backup_route_active": true
+      },
+      "power": {
+        "battery_pct": 65,
+        "voltage_v": 3.73,
+        "is_low_battery": false
+      },
+      "checksum": "3C02F5AA"
+    },
+    {
+      "msg_id": "SN-20261016-4002",
+      "timestamp": 1729074907,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-02",
+      "personnel_name": "Lance Naik Amit Singh",
+      "callsign": "DELTA-SCOUT",
+      "status": "WARNING",
+      "alert_type": "LOW_BATTERY",
+      "vitals": {
+        "heart_rate_bpm": 108,
+        "spo2_percent": 94,
+        "body_temp_c": 35.5,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.07,
+        "accel_y_g": 0.10,
+        "accel_z_g": 0.99,
+        "impact_g": 1.08,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.4302,
+        "longitude": 75.7635,
+        "altitude_m": 3300.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -92,
+        "snr_db": 4.9,
+        "hop_count": 2,
+        "route": ["SOLDIER-02", "RELAY-02", "BASE-COMMAND-01"],
+        "backup_route_active": true
+      },
+      "power": {
+        "battery_pct": 9,
+        "voltage_v": 3.32,
+        "is_low_battery": true
+      },
+      "checksum": "7A28DE44"
+    },
+    {
+      "msg_id": "SN-20261016-4003",
+      "timestamp": 1729074912,
+      "node_id": "BASE-COMMAND-01",
+      "origin_id": "SOLDIER-03",
+      "personnel_name": "Havildar Vikram Thapa",
+      "callsign": "DELTA-REAR",
+      "status": "SAFE",
+      "alert_type": "PERIODIC_TELEMETRY",
+      "vitals": {
+        "heart_rate_bpm": 88,
+        "spo2_percent": 97,
+        "body_temp_c": 36.5,
+        "is_simulated": true
+      },
+      "kinematics": {
+        "accel_x_g": 0.06,
+        "accel_y_g": 0.08,
+        "accel_z_g": 1.00,
+        "impact_g": 1.04,
+        "fall_detected": false,
+        "is_immobile": false
+      },
+      "gps": {
+        "latitude": 34.5552,
+        "longitude": 76.1365,
+        "altitude_m": 4135.0,
+        "fix_quality": "3D_FIX_SIMULATED"
+      },
+      "network": {
+        "rssi_dbm": -87,
+        "snr_db": 6.1,
+        "hop_count": 2,
+        "route": ["SOLDIER-03", "RELAY-02", "BASE-COMMAND-01"],
+        "backup_route_active": true
+      },
+      "power": {
+        "battery_pct": 55,
+        "voltage_v": 3.68,
+        "is_low_battery": false
+      },
+      "checksum": "D871AA39"
+    }
+  ]
+}

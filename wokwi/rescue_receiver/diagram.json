@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "author": "SURAKSHA-NET Engineering Team",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -140,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_emergency",
+      "top": -50,
+      "left": -120,
+      "attrs": { "color": "red", "label": "CASUALTY ALERT" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -10,
+      "left": -120,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_net",
+      "top": 50,
+      "left": -120,
+      "attrs": { "color": "blue", "label": "NETWORK RX" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 90,
+      "left": -120,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzz_siren",
+      "top": 150,
+      "left": 160,
+      "attrs": { "volume": "0.8", "label": "RESCUE SIREN" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_ack",
+      "top": 160,
+      "left": -120,
+      "attrs": { "color": "green", "label": "ACK/MUTE" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor", "RX", "" ],
+    [ "esp:RX", "$serialMonitor", "TX", "" ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "oled1:SDA", "esp:21", "orange", [ "v0" ] ],
+    [ "led_emergency:A", "esp:4", "red", [ "v0" ] ],
+    [ "led_emergency:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "v0" ] ],
+    [ "led_net:A", "esp:2", "blue", [ "v0" ] ],
+    [ "led_net:C", "r2:1", "black", [ "v0" ] ],
+    [ "r2:2", "esp:GND.2", "black", [ "v0" ] ],
+    [ "buzz_siren:2", "esp:15", "purple", [ "v0" ] ],
+    [ "buzz_siren:1", "esp:GND.3", "black", [ "v0" ] ],
+    [ "btn_ack:1.l", "esp:14", "green", [ "v0" ] ],
+    [ "btn_ack:2.l", "esp:GND.1", "black", [ "v0" ] ]
+  ]
+}

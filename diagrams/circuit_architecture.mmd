@@ -1,0 +1,68 @@
+graph LR
+    subgraph POWER["Power Subsystem"]
+        BAT["3.7V 1200mAh LiPo Cell"] --> CHARGER["TP4056 USB-C Charge & Protection IC"]
+        CHARGER --> LDO["3.3V Low-Dropout Regulator (ME6211)"]
+        LDO --> RAIL3V3["3.3V VCC Rail"]
+    end
+
+    subgraph MCU["ESP32-WROOM-32 Core"]
+        CORE["Xtensa Dual-Core 240MHz"]
+        I2C["I2C Controller (GPIO 21 / 22)"]
+        SPI["SPI Controller (GPIO 18 / 19 / 23)"]
+        GPIO_IN["Digital Input (GPIO 2 / 15)"]
+        GPIO_OUT["Digital Output / PWM (GPIO 4 / 13)"]
+        CORE --- I2C
+        CORE --- SPI
+        CORE --- GPIO_IN
+        CORE --- GPIO_OUT
+    end
+
+    subgraph I2C_BUS["I2C Sensor & Display Bus (3.3V)"]
+        MPU["MPU-6050 6-Axis IMU<br/>(Address: 0x68)"]
+        OLED["SSD1306 0.96 inch OLED<br/>(Address: 0x3C)"]
+        MAX["MAX30102 Heart Rate/SpO2<br/>(Address: 0x57 - Optional)"]
+    end
+
+    subgraph SENSORS_ACTUATORS["Peripherals & Human Interface"]
+        DHT["DHT22 Ambient/Body Temp<br/>(GPIO 15 1-Wire)"]
+        SOS_BTN["Tactile SOS Pushbutton<br/>(GPIO 2 Active-LOW)"]
+        ALERT_LED["High-Lumen Red LED<br/>(GPIO 4 via 220 ohm)"]
+        HAPTIC["Haptic Vibration Motor<br/>(GPIO 13 via 2N7002 MOSFET)"]
+    end
+
+    subgraph RF_TRANSCEIVER["Long-Range RF Subsystem"]
+        LORA["Semtech SX1278 LoRa Module<br/>(865-867 MHz WPC Band)"]
+        ANT["50 ohm Quarter-Wave Helical Antenna"]
+        LORA --- ANT
+    end
+
+    %% Connections
+    RAIL3V3 ==> CORE
+    RAIL3V3 ==> MPU
+    RAIL3V3 ==> OLED
+    RAIL3V3 ==> LORA
+    RAIL3V3 ==> DHT
+
+    I2C --> MPU
+    I2C --> OLED
+    I2C -.-> MAX
+
+    GPIO_IN <-- DHT
+    GPIO_IN <-- SOS_BTN
+
+    GPIO_OUT --> ALERT_LED
+    GPIO_OUT --> HAPTIC
+
+    SPI <==> LORA
+
+    classDef pwr fill:#5a2d0c,stroke:#e65100,stroke-width:2px,color:#fff;
+    classDef mcu fill:#1a365d,stroke:#2b6cb0,stroke-width:2px,color:#fff;
+    classDef bus fill:#22543d,stroke:#38a169,stroke-width:2px,color:#fff;
+    classDef peri fill:#4a154b,stroke:#805ad5,stroke-width:2px,color:#fff;
+    classDef rf fill:#742a2a,stroke:#e53e3e,stroke-width:2px,color:#fff;
+
+    class BAT,CHARGER,LDO,RAIL3V3 pwr;
+    class CORE,I2C,SPI,GPIO_IN,GPIO_OUT mcu;
+    class MPU,OLED,MAX bus;
+    class DHT,SOS_BTN,ALERT_LED,HAPTIC peri;
+    class LORA,ANT rf;

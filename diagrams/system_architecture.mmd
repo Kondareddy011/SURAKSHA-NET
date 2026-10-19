@@ -1,0 +1,54 @@
+graph TD
+    subgraph TIER1["Tier 1: Soldier Wearable Tactical Nodes"]
+        S1["Soldier 01: Lead Patrol<br/>(ESP32 + MPU6050 + Temp + SOS)"]
+        S2["Soldier 02: Scout Element<br/>(ESP32 + MPU6050 + Temp + SOS)"]
+        S3["Soldier 03: Rear Guard<br/>(ESP32 + MPU6050 + Temp + SOS)"]
+    end
+
+    subgraph TIER2["Tier 2: Tactical RF Relay & Mesh Repeater Tier"]
+        R1["Primary Relay: Ridge-Alpha<br/>(High-Elevation Autonomous Repeater)"]
+        R2["Secondary Relay: Ridge-Bravo<br/>(Dynamic Mesh Failover Repeater)"]
+    end
+
+    subgraph TIER3["Tier 3: Tactical Base Station & Rescue Gateway"]
+        GW["Base Station Receiver Node<br/>(ESP32 Gateway + Audio Siren + Alert Strobe)"]
+        USB["USB Serial Bridge (115200 Baud) / WiFi API"]
+    end
+
+    subgraph TIER4["Tier 4: Tactical Command & Rescue Operations Dashboard"]
+        DASH["Streamlit Command Dashboard (app.py)"]
+        TRIAGE["Automated Casualty Triage Engine"]
+        GIS["High-Altitude Tactical GIS Map"]
+        LOG["Mission Event & RF Routing Log"]
+    end
+
+    %% RF Links
+    S1 -.->|"LoRa / RF (865-867 MHz)"| R1
+    S2 -.->|"LoRa / RF (865-867 MHz)"| R1
+    S3 -.->|"LoRa / RF (865-867 MHz)"| R1
+
+    %% Dynamic Mesh Failover Links
+    S1 -.->|"Dynamic Failover"| R2
+    S2 -.->|"Dynamic Failover"| R2
+    S3 -.->|"Dynamic Failover"| R2
+
+    %% Relay to Gateway
+    R1 ==>|"High-Power RF Hop (+20 dBm)"| GW
+    R2 ==>|"High-Power RF Hop (+20 dBm)"| GW
+    S1 -.->|"Direct Fallback (Terrain Permitting)"| GW
+
+    %% Gateway to Dashboard
+    GW --> USB --> DASH
+    DASH --> TRIAGE
+    DASH --> GIS
+    DASH --> LOG
+
+    classDef soldier fill:#1f3a5f,stroke:#4b8bbe,stroke-width:2px,color:#fff;
+    classDef relay fill:#4a3f18,stroke:#d4af37,stroke-width:2px,color:#fff;
+    classDef gateway fill:#2d4a22,stroke:#4caf50,stroke-width:2px,color:#fff;
+    classDef dash fill:#3a1c28,stroke:#e91e63,stroke-width:2px,color:#fff;
+
+    class S1,S2,S3 soldier;
+    class R1,R2 relay;
+    class GW,USB gateway;
+    class DASH,TRIAGE,GIS,LOG dash;
